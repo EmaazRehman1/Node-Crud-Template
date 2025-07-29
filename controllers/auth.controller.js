@@ -89,33 +89,6 @@ const login=async(req,res)=>{
         return res.status(500).json({message: 'Internal server error'});
     }
 }
-
-// const handleRefreshToken=(req,res)=>{
-//     const cookies=req.cookies;
-//     if(!cookies?.jwt){
-//         return res.status(401).json({message: 'No refresh token found'});
-//     }
-//     const refreshToken=cookies.jwt;
-//     const user=User.findOne({refreshToken});
-//     if(!user){
-//         return res.status(403).json({message: 'Invalid refresh token'});
-//     }
-//     jwt.verify(
-//         refreshToken,
-//         REFRESH_TOKEN_SECRET,
-//         (err,decoded)=>{
-//             if(err || user.name !== decoded.name){
-//                 return res.status(403).json({message: 'Invalid refresh token'});
-//             }
-//             const accessToken=jwt.sign(
-//                 {name: decoded.name},
-//                 ACCESS_TOKEN_SECRET,
-//                 {expiresIn: '30s'}
-//             );
-//             res.status(200).json({accessToken});
-//         }
-//     )
-// }
     
 
 module.exports={SignUp, login};
